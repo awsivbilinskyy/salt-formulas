@@ -1,6 +1,10 @@
+{% from "salt-formulas/map.jinja" import mysqlset with context %}
+
 include:
   - salt-formulas.restart
 mysql_server_config:
   file.managed:
-    - name: /etc/my.cnf.d/server.cnf
-    - source: salt://salt-formulas/files/server.cnf
+    - name: {{ mysqlset.server_conf }}
+    - source: {{ mysqlset.server_conf_source }}
+    - require:
+      - pkg: {{ mysqlset.servertype }}

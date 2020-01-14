@@ -1,5 +1,5 @@
 set_hostname:
-  network.system
+  network.system:
     - enabled: True
     - hostname: salt
     - apply_hostname: True

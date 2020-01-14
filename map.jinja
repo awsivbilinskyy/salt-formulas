@@ -1,0 +1,21 @@
+{% set mysqlset = salt['grains.filter_by']({
+
+  'Debian': {
+    'servertype': 'mysql-server',
+    'client': 'mysql-client',
+    'server_conf': '/etc/mysql/mysql.conf.d/mysqld.cnf',
+    'server_conf_source': 'salt://salt-formulas/files/deb_mysqld.cnf',
+    'service': 'mysql',
+    'python': 'python-mysqldb',
+  },
+
+  'RedHat': {
+    'servertype': 'mariadb-server',
+    'client': 'mariadb',
+    'server_conf': '/etc/my.cnf.d/server.cnf',
+    'server_conf_source': 'salt://salt-formulas/files/rh_server.cnf',
+    'service': 'mariadb',
+    'python': 'MySQL-python',
+  },
+
+})%}
