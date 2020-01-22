@@ -1,0 +1,21 @@
+{% set mynginx = salt['grains.filter_by']({
+
+  'Debian': {
+    'servertype': 'nginx',
+    'server_conf': '/etc/nginx/conf.d/service.conf',
+    'server_conf_source': 'salt://nginx/files/service.conf',
+    'default_page': '/usr/share/nginx/html/index.html',
+    'default_page_source': 'salt://nginx/files/deb_index.html',
+    'service': 'nginx',
+  },
+
+  'RedHat': {
+    'servertype': 'nginx',
+    'server_conf': '/etc/nginx/conf.d/service.conf',
+    'server_conf_source': 'salt://nginx/files/service.conf',
+    'default_page': '/usr/share/nginx/html/index.html',
+    'default_page_source': 'salt://nginx/files/rh_index.html',
+    'service': 'nginx',
+  },
+
+})%}
