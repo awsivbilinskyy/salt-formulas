@@ -4,8 +4,8 @@ base:
   'minion* or G@os:Ubuntu':
     - selinux
     - nginx
-    - nginx.service
+#    - nginx.service
   'minion* or G@os:CentOS':
     - selinux
     - nginx
-    - nginx.service
+#    - nginx.service
