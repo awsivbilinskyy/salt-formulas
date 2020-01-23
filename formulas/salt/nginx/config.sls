@@ -1,8 +1,5 @@
 {% from "nginx/map.jinja" import mynginx with context %}
 
-include:
-  - nginx.restart
-
 nginx_server_config:
   file.managed:
     - name: {{ mynginx.server_conf }}
@@ -27,3 +24,6 @@ nginx_webpage_available:
       - pkg: nginx
 
 {% endif %}
+
+include:
+  - nginx.restart

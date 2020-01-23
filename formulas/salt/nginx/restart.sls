@@ -7,3 +7,4 @@ nginx_restart:
     - onchanges:
       - nginx_server_config
       - nginx_webpage_config
+      - nginx_webpage_available
