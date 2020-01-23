@@ -1,6 +1,6 @@
 {% from "nginx/map.jinja" import mynginx with context %}
 
-nginx_service_enable:
+nginx:
   service.running:
     - name: {{ mynginx.service }}
     - enable: True
