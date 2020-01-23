@@ -1,7 +1,5 @@
-install_nginx:
-  local.state.single:
-    - tgt: 'roles:webserver'
-      - tgt_type: grain
-    - arg:
-      - pkg.installed
-        - nginx
+{% if data['id'] == 'minion*' %}
+highstate_run:
+  local.state.apply:
+    - tgt: minion*
+{% endif %}
