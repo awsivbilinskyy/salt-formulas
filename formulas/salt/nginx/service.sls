@@ -3,4 +3,5 @@
 nginx_service_enable:
   service.running:
     - name: {{ mynginx.service }}
-    - enable: true
+    - enable: True
+    - reload: True

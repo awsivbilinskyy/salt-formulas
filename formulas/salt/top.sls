@@ -1,6 +1,6 @@
 base:
   'salt':
-    - selinux.xelinux
+    - selinux.selinux
   'minion* or G@os:Ubuntu':
     - selinux
     - nginx
