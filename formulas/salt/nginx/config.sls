@@ -25,7 +25,7 @@ nginx_webpage_available:
 
 {% endif %}
 
-nginx_restart:
+nginx_restarting_configure:
   module.wait:
     - name: service.restart
     - m_name: {{ mynginx.service }}
