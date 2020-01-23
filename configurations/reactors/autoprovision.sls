@@ -1,5 +1,4 @@
-{% if data['id'] == 'minion*' %}
-highstate_run:
-  local.state.apply:
-    - tgt: minion*
-{% endif %}
+deploy_minions:
+  runner.state.orchestrate:
+    - mods: orch.setup
+
