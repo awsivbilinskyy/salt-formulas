@@ -19,7 +19,26 @@ default:
   version: 5
 {%- endload %}
 
-{%- set server = salt['grains.filter_by'](base_defaults,base='default') %}
+{%- set server = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('elasticsearch:server'), base='default') %}
+
+{%- load_yaml as client_defaults %}
+Debian:
+  pkgs:
+  - python-elasticsearch
+  server:
+    host: 127.0.0.1
+    port: 9200
+    binary_port: 9300
+RedHat:
+  pkgs:
+  - python-elasticsearch
+  server:
+    host: 127.0.0.1
+    port: 9200
+    binary_port: 9300
+{%- endload %}
+
+{%- set client = salt['grains.filter_by'](client_defaults, merge=salt['pillar.get']('elasticsearch:client')) %}
 
 {% set monitoring = salt['grains.filter_by']({
     'default': {
