@@ -1,5 +1,4 @@
-{% from "elasticsearch/map.jinja" import server with context %}
-
+{%- from "elasticsearch/map.jinja" import server with context %}
 {%- if server.enabled %}
 {%- if server.curator is defined %}
 include:
