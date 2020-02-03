@@ -1,20 +1,22 @@
-{%- load_yaml as base_defaults %}
-Debian:
-  pkgs:
-  - elasticsearch
-  - default-jre-headless
-  curator_pkgs:
-  - elasticsearch-curator
-  - cron
-  service: elasticsearch
-  version: '1.4.4'
-RedHat:
-  pkgs:
-  - elasticsearch
-  curator_pkgs:
-  - elasticsearch-curator
-  service: elasticsearch
-  version: '1.4.4'
-default:
-  version: 5
-{%- endload %}
+{% set mynginx = salt['grains.filter_by']({
+
+  'Debian': {
+    'pkgs':
+    - elasticsearch
+    - default-jre-headless
+    'curator_pkgs':
+    - elasticsearch-curator
+    - cron
+    'service': 'elasticsearch',
+    'version': '1.4.4',
+  'RedHat': {
+    'pkgs':
+    - elasticsearch
+    'curator_pkgs':
+    - elasticsearch-curator
+    'service': 'elasticsearch'
+    'version': '1.4.4'
+  'default':
+    'version': '5'
+
+})%}
