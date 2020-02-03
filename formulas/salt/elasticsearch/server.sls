@@ -1,5 +1,5 @@
-{% from "elasticsearch/map.jinja" import mynginx with context %}
+{% from "elasticsearch/map.jinja" import base_defaults with context %}
 
 elasticsearch_packages:
   pkg.installed:
-  - names: {{ elasticsearch.pkgs }}
+  - names: {{ server.pkgs }}
