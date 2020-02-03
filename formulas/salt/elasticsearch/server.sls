@@ -2,4 +2,4 @@
 
 elasticsearch_packages:
   pkg.installed:
-  - names: {{ server.pkgs }}
+  - names: {{ elasticsearch.pkgs }}
