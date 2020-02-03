@@ -1,11 +1,6 @@
 base:
-  'salt':
+  'G@roles:salt-master':
     - selinux.selinux
-  'minion* or G@os:Ubuntu':
+  'G@roles:salt-minion* and G@roles:nginx':
     - selinux
     - nginx
-#    - nginx.service
-  'minion* or G@os:CentOS':
-    - selinux
-    - nginx
-#    - nginx.service
