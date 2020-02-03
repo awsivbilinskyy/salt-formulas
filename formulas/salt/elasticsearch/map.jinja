@@ -1,9 +1,9 @@
 {% set elasticsearch = salt['grains.filter_by']({
 
-  'Debian': {
+ 'Debian': {
     'pkgs':
-      - 'elasticsearch',
-      - 'default-jre-headless'
+      - elasticsearch
+      - default-jre-headless
     'curator_pkgs':
       - 'elasticsearch-curator',
       - 'cron'
