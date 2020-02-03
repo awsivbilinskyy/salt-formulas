@@ -1,6 +1,6 @@
-{%- set server = salt['grains.filter_by']%}
+{%- set server = salt['grains.filter_by']({
 
-{%- load_yaml as server %}
+
 Debian:
   pkgs:
   - elasticsearch
@@ -19,4 +19,5 @@ RedHat:
   version: '1.4.4'
 default:
   version: 5
-{%- endload %}
+
+})}
