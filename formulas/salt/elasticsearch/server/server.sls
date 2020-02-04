@@ -25,14 +25,11 @@ jre_packages:
 {% endif %}
 
 {% if grains['os_family'] == 'RedHat' %}
-elasticsearch_repository:
+elasticsearch_centos_repository:
   pkgrepo.managed:
     - humanname: elasticsearch_repository
-    - name: https://artifacts.elastic.co/packages/6.x/yum
-    - dist: stable
-    - file: /etc/yum.repos.d/elasticsearch.repo
+    - mirrorlist: https://artifacts.elastic.co/packages/6.x/yum
     - gpgcheck: 1
-    - enabled: 1
     - key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 uptodate_apt:
