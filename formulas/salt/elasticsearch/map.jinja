@@ -19,5 +19,5 @@ default:
   version: 5
 {%- endload %}
 
-{%- set server = salt['grains.filter_by'](base_defaults, base='default') %}
+{%- set server = salt['grains.filter_by'](base_defaults) %}
 
