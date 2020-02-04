@@ -28,9 +28,9 @@ jre_packages:
 elasticsearch_centos_repository:
   pkgrepo.managed:
     - humanname: elasticsearch_repository
-    - mirrorlist: https://artifacts.elastic.co/packages/6.x/yum
+    - mirrorlist: https://artifacts.elastic.co/packages/oss-7.x/yum
     - gpgcheck: 1
-    - key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    - gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 uptodate_apt:
   pkg.uptodate:
