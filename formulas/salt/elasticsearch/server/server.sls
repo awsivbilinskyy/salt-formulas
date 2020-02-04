@@ -1,5 +1,9 @@
 {%- from "elasticsearch/map.jinja" import server with context %}
 
+uptodate:
+  pkg.uptodate:
+    - refresh: True
+
 #elasticsearch_repository:
 #  pkgrepo.managed:
 #    - humanname: elasticsearch_repository
