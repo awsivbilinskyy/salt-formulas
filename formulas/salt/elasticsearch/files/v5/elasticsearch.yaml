@@ -1,6 +1,4 @@
 ---
 network.host: 0.0.0.0
-#cluster.name: "{{elk_elasticsearch_cluster_name}}"
-#discovery.zen.minimum_master_nodes: {{elk_elasticsearch_replicate}}
 xpack.license.self_generated.type: basic
 path.logs: /tmp/elasticsearch
