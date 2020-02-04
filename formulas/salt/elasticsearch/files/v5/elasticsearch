@@ -48,8 +48,8 @@
 # Note that this setting is only used by the init script. If changed, make sure that
 # the configured user can read and write into the data, work, plugins and log directories.
 # For systemd service, the user is usually configured in file /usr/lib/systemd/system/elasticsearch.service
-#ES_USER=elasticsearch
-#ES_GROUP=elasticsearch
+ES_USER=elasticsearch
+ES_GROUP=elasticsearch
 
 # The number of seconds to wait before checking if Elasticsearch started successfully as a daemon process
 ES_STARTUP_SLEEP_TIME=5
@@ -74,3 +74,5 @@ MAX_LOCKED_MEMORY=unlimited
 # When using Systemd, this setting is ignored and the 'vm.max_map_count'
 # property is set at boot time in /usr/lib/sysctl.d/elasticsearch.conf
 #MAX_MAP_COUNT=262144
+
+START_DAEMON=true
