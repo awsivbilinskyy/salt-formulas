@@ -1,4 +1,13 @@
+#{%- from "elasticsearch/map.jinja" import server with context -%}
 ---
 network.host: 0.0.0.0
+#{%- if server.get('bind', {}).address is defined %}
+#network.host: {{ server.bind.address }}
+#{%- endif %}
+cluster.name: "elasticsearch"
+#discovery.zen.minimum_master_nodes: {{elk_elasticsearch_replicate}}
+discovery.zen.ping.multicast.enabled: false
 xpack.license.self_generated.type: basic
 path.logs: /tmp/elasticsearch
+http.port: 9200
+http.enabled: true
