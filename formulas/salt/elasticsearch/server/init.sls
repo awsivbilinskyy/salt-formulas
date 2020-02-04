@@ -21,15 +21,6 @@ elasticsearch_config:
   - template: jinja
   - require:
     - pkg: elasticsearch_packages
-{%- if server.version == 2 %}
-elasticsearch_logging:
-  file.managed:
-  - name: /etc/elasticsearch/logging.yml
-  - source: salt://elasticsearch/files/v2/logging.yml
-  - template: jinja
-  - require:
-    - pkg: elasticsearch_packages
-{%- endif %}
 {%- if server.version == 5 %}
 elasticsearch_logging:
   file.managed:
