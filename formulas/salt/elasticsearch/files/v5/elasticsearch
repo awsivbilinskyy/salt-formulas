@@ -1,4 +1,4 @@
-#{%- from "elasticsearch/map.jinja" import server with context -%}
+{%- from "elasticsearch/map.jinja" import server with context -%}
 ################################
 # Elasticsearch
 ################################
@@ -20,7 +20,7 @@
 
 # Heap size defaults to 256m min, 1g max
 # Set ES_HEAP_SIZE to 50% of available RAM, but no more than 31g
-##ES_HEAP_SIZE={{ server.get('heap', {}).get('size', grains.get('mem_total', 1024)/2/1024)|round(0, 'ceil')|int }}g
+ES_HEAP_SIZE={{ server.get('heap', {}).get('size', grains.get('mem_total', 1024)/2/1024)|round(0, 'ceil')|int }}g
 
 # Heap new generation
 #ES_HEAP_NEWSIZE=
