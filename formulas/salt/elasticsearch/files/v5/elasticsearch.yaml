@@ -1,4 +1,4 @@
-{%- from "elasticsearch/map.jinja" import server with context %}
+#{%- from "elasticsearch/map.jinja" import server with context %}
 
 ##################### Elasticsearch Configuration Example #####################
 
@@ -48,12 +48,12 @@ node.name: {{ server.get('name', '${HOSTNAME}') }}
 #
 # Allow this node to be eligible as a master node (enabled by default):
 #
-node.master: {{ server.get('master', True)|lower }}
+#node.master: {{ server.get('master', True)|lower }}
 #
 # Allow this node to store data (enabled by default):
 #
-node.data: {{ server.get('data', True)|lower }}
-node.ingest: {{ server.get('ingest', True)|lower }}
+#node.data: {{ server.get('data', True)|lower }}
+#node.ingest: {{ server.get('ingest', True)|lower }}
 
 #{%- if server.attrs is defined %}
 #  {%- for name, values in server.attrs.iteritems() %}
@@ -103,28 +103,28 @@ node.ingest: {{ server.get('ingest', True)|lower }}
 # to disable it, set the following:
 # node.max_local_storage_nodes: 1
 
-{%- if server.get('threadpool', {}).get('bulk', {}).queue_size is defined %}
+#{%- if server.get('threadpool', {}).get('bulk', {}).queue_size is defined %}
 # For bulk operations. Thread pool type is fixed with a size of # of available processors.
-thread_pool.bulk.queue_size: {{ server.threadpool.bulk.queue_size }}
-{%- endif %}
+#thread_pool.bulk.queue_size: {{ server.threadpool.bulk.queue_size }}
+#{%- endif %}
 
 ############################### Remote Search #################################
 
-{%- if server.get("search", {}).get("remote", {}).connect is defined %}
-search.remote.connect: {{ server.search.connect | lower }}
-{%- endif %}
+#{%- if server.get("search", {}).get("remote", {}).connect is defined %}
+#search.remote.connect: {{ server.search.connect | lower }}
+#{%- endif %}
 
-{%- if server.get("search", {}).get("remote", {}).attr is defined %}
-search.remote.node.attr: {{ server.search.remote.attr }}
-{%- endif %}
+#{%- if server.get("search", {}).get("remote", {}).attr is defined %}
+#search.remote.node.attr: {{ server.search.remote.attr }}
+#{%- endif %}
 
-{%- if server.get("search", {}).get("remote", {}).clusters is defined %}
-  {%- for name, values in server.search.remote.clusters.iteritems() %}
-    {%- if values.get("enabled", True) %}
-search.remote.{{ name }}.seeds: {{ values.seeds | json }}
-    {%- endif %}
-  {%- endfor %}
-{%- endif %}
+#{%- if server.get("search", {}).get("remote", {}).clusters is defined %}
+#  {%- for name, values in server.search.remote.clusters.iteritems() %}
+#    {%- if values.get("enabled", True) %}
+#search.remote.{{ name }}.seeds: {{ values.seeds | json }}
+#    {%- endif %}
+#  {%- endfor %}
+#{%- endif %}
 
 #################################### Index ####################################
 
@@ -184,9 +184,9 @@ search.remote.{{ name }}.seeds: {{ values.seeds | json }}
 # Path to directory where to store index data allocated for this node.
 #
 # path.data: /path/to/data
-{%- if server.get('path', {}).data is defined %}
-path.data: {{ server.path.data }}
-{%- endif %}
+#{%- if server.get('path', {}).data is defined %}
+#path.data: {{ server.path.data }}
+#{%- endif %}
 #
 # Can optionally include more than one location, causing data to be striped across
 # the locations (a la RAID 0) on a file level, favouring locations with most free
@@ -201,20 +201,20 @@ path.data: {{ server.path.data }}
 # Path to log files:
 #
 # path.logs: /path/to/logs
-{%- if server.get('path', {}).logs is defined %}
-path.logs = {{ server.path.logs }}
-{%- endif %}
+#{%- if server.get('path', {}).logs is defined %}
+#path.logs = {{ server.path.logs }}
+#{%- endif %}
 
 # Path to where plugins are installed:
 #
 # path.plugins: /path/to/plugins
 #
-{%- if server.snapshot is defined %}
-path.repo:
-  {%- for repo_name, repo in server.snapshot.iteritems() %}
-  - {{ repo.path }}
-  {%- endfor %}
-{%- endif %}
+#{%- if server.snapshot is defined %}
+#path.repo:
+#  {%- for repo_name, repo in server.snapshot.iteritems() %}
+#  - {{ repo.path }}
+#  {%- endfor %}
+#{%- endif %}
 
 
 #################################### Plugin ###################################
@@ -232,9 +232,9 @@ path.repo:
 # Set this property to true to lock the memory:
 #
 # bootstrap.mlockall: true
-{%- if server.mlockall is defined %}
-bootstrap.memory_lock: {{ server.mlockall|lower }}
-{%- endif %}
+#{%- if server.mlockall is defined %}
+#bootstrap.memory_lock: {{ server.mlockall|lower }}
+#{%- endif %}
 
 # Make sure that the ES_MIN_MEM and ES_MAX_MEM environment variables are set
 # to the same value, and that the machine has enough memory to allocate
@@ -255,52 +255,52 @@ bootstrap.memory_lock: {{ server.mlockall|lower }}
 #
 # network.host: 192.168.0.1
 
-{%- if server.get('bind', {}).address is defined %}
-network.host: {{ server.bind.address }}
-{%- endif %}
+#{%- if server.get('bind', {}).address is defined %}
+#network.host: {{ server.bind.address }}
+#{%- endif %}
 
 # Set specifically the address other nodes will use to communicate with this
 # node. If not set, it is automatically derived. It must point to an actual
 # IP address.
-{%- if server.publish_host is defined %}
-network.publish_host: {{ server.publish_host }}
-{%- endif %}
+#{%- if server.publish_host is defined %}
+#network.publish_host: {{ server.publish_host }}
+#{%- endif %}
 
 
 # Set a custom port for the node to node communication (9300 by default):
 #
 # transport.tcp.port: 9300
-{%- if server.get("transport", {}).get("tcp", {}).port is defined %}
-transport.tcp.port: {{ server.transport.tcp.port }}
-{%- endif %}
+#{%- if server.get("transport", {}).get("tcp", {}).port is defined %}
+#transport.tcp.port: {{ server.transport.tcp.port }}
+#{%- endif %}
 
 # Enable compression for all communication between nodes (disabled by default):
 #
 # transport.tcp.compress: true
-{%- if server.get("transport", {}).get("tcp", {}).compress is defined %}
-transport.tcp.compress: {{ server.transport.tcp.compress | lower }}
-{%- endif %}
+#{%- if server.get("transport", {}).get("tcp", {}).compress is defined %}
+#transport.tcp.compress: {{ server.transport.tcp.compress | lower }}
+#{%- endif %}
 
 # Set a custom port to listen for HTTP traffic:
 #
-# http.port: 9200
-{%- if server.get('bind', {}).port is defined %}
-http.port: {{ server.bind.port }}
-{%- endif %}
+http.port: 9200
+#{%- if server.get('bind', {}).port is defined %}
+#http.port: {{ server.bind.port }}
+#{%- endif %}
 
 # Set a custom allowed content length:
 #
 # http.max_content_length: 100mb
 
 # Enable or disable cross-origin resource sharing
-{%- if server.get('cors', {}).enabled is defined %}
-http.cors.enabled: {{ server.cors.enabled|lower }}
-{%- endif %}
+#{%- if server.get('cors', {}).enabled is defined %}
+#http.cors.enabled: {{ server.cors.enabled|lower }}
+#{%- endif %}
 
 # Which origins to allow.
-{%- if server.get('cors', {}).allow_origin is defined %}
-http.cors.allow-origin: {{ server.cors.allow_origin }}
-{%- endif %}
+#{%- if server.get('cors', {}).allow_origin is defined %}
+#http.cors.allow-origin: {{ server.cors.allow_origin }}
+#{%- endif %}
 
 # Disable HTTP completely:
 #
@@ -329,26 +329,26 @@ http.enabled: true
 # Allow recovery process after N nodes in a cluster are up:
 #
 # gateway.recover_after_nodes: 1
-{%- if server.get('gateway', {}).recover_after_nodes is defined %}
-gateway.recover_after_nodes: {{ server.gateway.recover_after_nodes }}
-{%- endif %}
+#{%- if server.get('gateway', {}).recover_after_nodes is defined %}
+#gateway.recover_after_nodes: {{ server.gateway.recover_after_nodes }}
+#{%- endif %}
 
 # Set the timeout to initiate the recovery process, once the N nodes
 # from previous setting are up (accepts time value):
 #
 # gateway.recover_after_time: 5m
-{%- if server.get('gateway', {}).recover_after_time is defined %}
-gateway.recover_after_time: {{ server.gateway.recover_after_time }}
-{%- endif %}
+#{%- if server.get('gateway', {}).recover_after_time is defined %}
+#gateway.recover_after_time: {{ server.gateway.recover_after_time }}
+#{%- endif %}
 
 # Set how many nodes are expected in this cluster. Once these N nodes
 # are up (and recover_after_nodes is met), begin recovery process immediately
 # (without waiting for recover_after_time to expire):
 #
 # gateway.expected_nodes: 2
-{%- if server.get('gateway', {}).expected_nodes is defined %}
-gateway.expected_nodes: {{ server.gateway.expected_nodes }}
-{%- endif %}
+#{%- if server.get('gateway', {}).expected_nodes is defined %}
+#gateway.expected_nodes: {{ server.gateway.expected_nodes }}
+#{%- endif %}
 
 
 ############################# Recovery Throttling #############################
@@ -386,7 +386,7 @@ gateway.expected_nodes: {{ server.gateway.expected_nodes }}
 # operational within the cluster. Its recommended to set it to a higher value
 # than 1 when running more than 2 nodes in the cluster.
 #
-discovery.zen.minimum_master_nodes: {{ server.get('cluster', {}).minimum_master_nodes|default(1) }}
+#discovery.zen.minimum_master_nodes: {{ server.get('cluster', {}).minimum_master_nodes|default(1) }}
 
 # Set the time to wait for ping responses from other nodes when discovering.
 # Set this option to a higher value on a slow or congested network
@@ -408,9 +408,9 @@ discovery.zen.minimum_master_nodes: {{ server.get('cluster', {}).minimum_master_
 # 2. Configure an initial list of master nodes in the cluster
 #    to perform discovery when new nodes (master or data) are started:
 #
-{%- if server.get('cluster', {}).members is defined %}
-discovery.zen.ping.unicast.hosts: [{% for member in server.cluster.members %}"{{ member.host }}:{{ member.get('port', 9300) }}"{% if not loop.last %}, {% endif %}{% endfor %}]
-{%- endif %}
+#{%- if server.get('cluster', {}).members is defined %}
+#discovery.zen.ping.unicast.hosts: [{% for member in server.cluster.members %}"{{ member.host }}:{{ member.get('port', 9300) }}"{% if not loop.last %}, {% endif %}{% endfor %}]
+#{%- endif %}
 
 # EC2 discovery allows to use AWS EC2 API in order to perform discovery.
 #
@@ -463,6 +463,6 @@ discovery.zen.ping.unicast.hosts: [{% for member in server.cluster.members %}"{{
 #monitor.jvm.gc.old.info: 5s
 #monitor.jvm.gc.old.debug: 2s
 
-{%- if server.script is mapping %}
-script: {{ server.script|yaml }}
-{%- endif %}
+#{%- if server.script is mapping %}
+#script: {{ server.script|yaml }}
+#{%- endif %}
