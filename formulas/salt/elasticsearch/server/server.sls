@@ -14,17 +14,17 @@ uptodate_apt:
   pkg.uptodate:
     - refresh: True
 
-elasticsearch_packages:
-  pkg.installed:
-  - names: {{ server.pkgs }}
-
-#jre_packages:
-#  pkg.installed:
-#  - name: default-jre-headless
-
 #elasticsearch_packages:
 #  pkg.installed:
-#  - name: elasticsearch
+#  - names: {{ server.pkgs }}
+
+jre_packages:
+  pkg.installed:
+  - name: default-jre-headless
+
+elasticsearch_packages:
+  pkg.installed:
+  - name: elasticsearch
 
 {% endif %}
 
@@ -41,20 +41,20 @@ uptodate_apt:
   pkg.uptodate:
     - refresh: True
 
-elasticsearch_packages:
-  pkg.installed:
-  - names: {{ server.pkgs }}
-
-#java_open_packages:
-#  pkg.installed:
-#  - name: java-1.8.0-openjdk
-
-#java_devel_packages:
-#  pkg.installed:
-#  - name: java-1.8.0-openjdk-devel
-
 #elasticsearch_packages:
 #  pkg.installed:
-#  - name: elasticsearch-oss
+#  - names: {{ server.pkgs }}
+
+java_open_packages:
+  pkg.installed:
+  - name: java-1.8.0-openjdk
+
+java_devel_packages:
+  pkg.installed:
+  - name: java-1.8.0-openjdk-devel
+
+elasticsearch_packages:
+  pkg.installed:
+  - name: elasticsearch
 {% endif %}
 
