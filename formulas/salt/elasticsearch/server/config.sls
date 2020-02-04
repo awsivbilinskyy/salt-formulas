@@ -1,3 +1,5 @@
+{%- from "elasticsearch/map.jinja" import server with context %}
+
 elasticsearch_default:
   file.managed:
   - name: /etc/default/elasticsearch
