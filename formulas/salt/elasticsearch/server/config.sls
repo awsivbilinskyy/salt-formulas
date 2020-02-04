@@ -32,24 +32,25 @@ elasticsearch_jvm_options:
   - require:
     - pkg: elasticsearch_packages
 
-{%- if grains.get('init') == 'systemd' %}
-elasticsearch_override_limit_memlock_file:
-  file.managed:
-  - name: /etc/systemd/system/elasticsearch.service.d/override.conf
-  - makedirs: True
-  - contents: |
-      [Service]
-      LimitMEMLOCK=infinity
-  - require:
-    - pkg: elasticsearch_packages
-  - watch_in:
-    - module: elasticsearch_restart_systemd
-elasticsearch_restart_systemd:
-  module.wait:
-  - name: service.systemctl_reload
-  - watch_in:
-    - service: elasticsearch_service
-{%- endif %}
+#{%- if grains.get('init') == 'systemd' %}
+#elasticsearch_override_limit_memlock_file:
+#  file.managed:
+#  - name: /etc/systemd/system/elasticsearch.service.d/override.conf
+#  - makedirs: True
+#  - contents: |
+#      [Service]
+#      LimitMEMLOCK=infinity
+#  - require:
+#    - pkg: elasticsearch_packages
+#  - watch_in:
+#    - module: elasticsearch_restart_systemd
+#
+#elasticsearch_restart_systemd:
+#  module.wait:
+#  - name: service.systemctl_reload
+#  - watch_in:
+#    - service: elasticsearch_service
+#{%- endif %}
 
 elasticsearch_service:
   service.running:
