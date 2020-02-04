@@ -41,9 +41,9 @@ uptodate_apt:
   pkg.uptodate:
     - refresh: True
 
-#elasticsearch_packages:
-#  pkg.installed:
-#  - names: {{ server.pkgs }}
+elasticsearch_packages:
+  pkg.installed:
+  - names: {{ server.pkgs }}
 
 #java_open_packages:
 #  pkg.installed:
