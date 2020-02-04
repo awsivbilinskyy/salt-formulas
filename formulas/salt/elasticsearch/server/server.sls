@@ -13,6 +13,14 @@ uptodate:
   pkg.uptodate:
     - refresh: True
 
+#elasticsearch_packages:
+#  pkg.installed:
+#  - names: {{ server.pkgs }}
+
 elasticsearch_packages:
   pkg.installed:
-  - names: {{ server.pkgs }}
+  - name: elasticsearch
+
+jre_packages:
+  pkg.installed:
+  - name: default-jre-headless
