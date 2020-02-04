@@ -32,9 +32,9 @@
 # multiple clusters on the same network, make sure you're using unique names.
 #
 # cluster.name: elasticsearch
-{%- if server.get('cluster', {}).name is defined %}
-cluster.name: {{ server.cluster.name }}
-{% endif %}
+#{%- if server.get('cluster', {}).name is defined %}
+#cluster.name: {{ server.cluster.name }}
+#{% endif %}
 #################################### Node #####################################
 
 # Node names are generated dynamically on startup, so you're relieved
@@ -55,13 +55,13 @@ node.master: {{ server.get('master', True)|lower }}
 node.data: {{ server.get('data', True)|lower }}
 node.ingest: {{ server.get('ingest', True)|lower }}
 
-{%- if server.attrs is defined %}
-  {%- for name, values in server.attrs.iteritems() %}
-    {%- if values.get('enabled', True) %}
-node.attr.{{ name }}: {{ values.get('value', True) | lower }}
-    {%- endif %}
-  {%- endfor %}
-{%- endif %}
+#{%- if server.attrs is defined %}
+#  {%- for name, values in server.attrs.iteritems() %}
+#    {%- if values.get('enabled', True) %}
+#node.attr.{{ name }}: {{ values.get('value', True) | lower }}
+#    {%- endif %}
+#  {%- endfor %}
+#{%- endif %}
 # You can exploit these settings to design advanced cluster topologies.
 #
 # 1. You want this node to never become a master node, only to hold data.
@@ -95,9 +95,9 @@ node.attr.{{ name }}: {{ values.get('value', True) | lower }}
 # is a simple key value pair, similar to node.key: value, here is an example:
 #
 # node.rack: rack314
-{%- if server.rack is defined %}
-node.rack: {{ server.rack }}
-{%- endif %}
+#{%- if server.rack is defined %}
+#node.rack: {{ server.rack }}
+#{%- endif %}
 
 # By default, multiple nodes are allowed to start from the same installation location
 # to disable it, set the following:

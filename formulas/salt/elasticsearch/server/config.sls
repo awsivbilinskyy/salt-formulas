@@ -3,7 +3,7 @@
 elasticsearch_default:
   file.managed:
   - name: /etc/default/elasticsearch
-  - source: salt://elasticsearch/files/v{{ server.version }}/elasticsearch
+  - source: salt://elasticsearch/files/v5/elasticsearch
   - template: jinja
   - require:
     - pkg: elasticsearch_packages
@@ -11,7 +11,7 @@ elasticsearch_default:
 elasticsearch_config:
   file.managed:
   - name: /etc/elasticsearch/elasticsearch.yml
-  - source: salt://elasticsearch/files/v{{ server.version }}/elasticsearch.yml
+  - source: salt://elasticsearch/files/v5/elasticsearch.yml
   - template: jinja
   - require:
     - pkg: elasticsearch_packages
