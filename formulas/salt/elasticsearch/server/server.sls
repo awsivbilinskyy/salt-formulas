@@ -22,6 +22,10 @@ jre_packages:
   pkg.installed:
   - name: default-jre-headless
 
+elasticsearch_packages:
+  pkg.installed:
+  - name: elasticsearch
+
 {% endif %}
 
 {% if grains['os_family'] == 'RedHat' %}
@@ -48,8 +52,8 @@ java_devel_packages:
   pkg.installed:
   - name: java-1.8.0-openjdk-devel
 
-{% endif %}
-
 elasticsearch_packages:
   pkg.installed:
-  - name: elasticsearch
+  - name: elasticsearch-oss
+{% endif %}
+
