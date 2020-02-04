@@ -32,6 +32,7 @@ elasticsearch_repository:
     - dist: stable
     - file: /etc/yum.repos.d/elasticsearch.repo
     - gpgcheck: 1
+    - enabled: 1
     - key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 uptodate_apt:
