@@ -28,7 +28,7 @@ jre_packages:
 elasticsearch_repository:
   pkgrepo.managed:
     - humanname: elasticsearch_repository
-    - name: https://artifacts.elastic.co/packages/oss-7.x/yum
+    - name: https://artifacts.elastic.co/packages/6.x/yum
     - dist: stable
     - file: /etc/yum.repos.d/elasticsearch.repo
     - gpgcheck: 1
