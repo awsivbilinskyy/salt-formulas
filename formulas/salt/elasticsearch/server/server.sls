@@ -1,5 +1,6 @@
 {%- from "elasticsearch/map.jinja" import server with context %}
 
+{% if grains['os_family'] == 'Debian' %}
 elasticsearch_repository:
   pkgrepo.managed:
     - humanname: elasticsearch_repository
@@ -9,7 +10,7 @@ elasticsearch_repository:
     - gpgcheck: 1
     - key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-uptodate:
+uptodate_apt:
   pkg.uptodate:
     - refresh: True
 
@@ -17,10 +18,16 @@ uptodate:
 #  pkg.installed:
 #  - names: {{ server.pkgs }}
 
-elasticsearch_packages:
-  pkg.installed:
-  - name: elasticsearch
-
 jre_packages:
   pkg.installed:
   - name: default-jre-headless
+
+{% endif %}
+
+#uptodate_yum:
+#  pkg.uptodate:
+#    - refresh: True
+
+elasticsearch_packages:
+  pkg.installed:
+  - name: elasticsearch
