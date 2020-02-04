@@ -1,3 +1,3 @@
 include:
   - elasticsearch.server.server
-#  - elasticsearch.server.config
+  - elasticsearch.server.config
