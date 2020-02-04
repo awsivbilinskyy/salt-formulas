@@ -19,7 +19,7 @@ default:
   version: 5
 {%- endload %}
 
-{%- set server = salt['grains.filter_by'](base_defaults('elasticsearch:server'), base='default') %}
+{%- set server = salt['grains.filter_by'] %}
 
 {% set monitoring = salt['grains.filter_by']({
     'default': {
