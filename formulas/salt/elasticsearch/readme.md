@@ -15,19 +15,34 @@ cd /saltroot/formulas/ && git pull
 sudo salt -G 'roles:elasticsearch' state.sls elasticsearch 
 ```
 
+
+sudo -u elasticsearch /usr/share/elasticsearch/bin/elasticsearch -p /tmp/elasticsearch.pid 
 ```
 sudo chown elasticsearch:elasticsearch -R /usr/share/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /var/log/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /var/lib/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /etc/default/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /etc/elasticsearch
+sudo chown elasticsearch:elasticsearch -R /var/log/elasticsearch
+sudo chown elasticsearch:elasticsearch -R /var/run/elasticsearch
+
 ```
+[Configure elasticsearch on Centos7](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-centos-7)
 
 # Role description
 
+http://192.168.56.42:9200/
+http://192.168.56.41:9200/
 
-
-
+cluster.name: myES_Cluster
+node.name: ESNODE_CYR
+node.master: true
+node.data: true
+transport.host: localhost
+transport.tcp.port: 9300
+http.port: 9200
+network.host: 0.0.0.0
+discovery.zen.minimum_master_nodes: 2
 
 
 
