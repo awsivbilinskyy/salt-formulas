@@ -62,7 +62,7 @@ chmod_{{file}}:
     - name: {{ file }}
     - user: {{ server.elasticsearch_user }}
     - group: {{ server.elasticsearch_group }}
-    - file_mode: 644
+    - mode: 644
     - replace: False
 {% endfor %}
 
