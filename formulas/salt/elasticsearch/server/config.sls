@@ -5,32 +5,24 @@ elasticsearch_default:
   - name: /etc/default/elasticsearch
   - source: salt://elasticsearch/files/v5/elasticsearch
   - template: jinja
-  - require:
-    - pkg: elasticsearch_packages
 
 elasticsearch_config:
   file.managed:
   - name: /etc/elasticsearch/elasticsearch.yml
   - source: salt://elasticsearch/files/v5/elasticsearch.yaml
   - template: jinja
-  - require:
-    - pkg: elasticsearch_packages
 
 elasticsearch_logging:
   file.managed:
   - name: /etc/elasticsearch/log4j2.properties
   - source: salt://elasticsearch/files/v5/log4j2.properties
   - template: jinja
-  - require:
-    - pkg: elasticsearch_packages
 
 elasticsearch_jvm_options:
   file.managed:
   - name: /etc/elasticsearch/jvm.options
   - source: salt://elasticsearch/files/v5/jvm.options
   - template: jinja
-  - require:
-    - pkg: elasticsearch_packages
 
 {%- if grains.get('init') == 'systemd' %}
 elasticsearch_override_limit_memlock_file:
@@ -40,8 +32,6 @@ elasticsearch_override_limit_memlock_file:
   - contents: |
       [Service]
       LimitMEMLOCK=infinity
-  - require:
-    - pkg: elasticsearch_packages
   - watch_in:
     - module: elasticsearch_restart_systemd
 
