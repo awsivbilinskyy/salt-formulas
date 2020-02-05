@@ -1,7 +1,14 @@
 # documentation about salt elasticsearch role
+contents:
+- [my temp notes]()
+- [Role description]()
+- [Some known issues I've Faced with ELK]()
 
-temp notes:
 
+
+
+my temp notes:
+---
 ```
 cd /saltroot/formulas/ && git pull 
 
@@ -16,5 +23,39 @@ sudo chown elasticsearch:elasticsearch -R /etc/default/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /etc/elasticsearch
 ```
 
-Centosbag
-https://discuss.elastic.co/t/elasticsearch-will-not-start-no-logs-code-exited-status-1-failure/135797
+# Role description
+
+
+
+
+
+
+
+**Some known issues I've Faced with ELK:**
+---
+[elastic bug with Centos 7](https://discuss.elastic.co/t/elasticsearch-will-not-start-no-logs-code-exited-status-1-failure/135797)
+problem during elasticsearch start:
+```
+[vagrant@minion2 ~]$ sudo systemctl status elasticsearch.service -l
+● elasticsearch.service - Elasticsearch
+   Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/elasticsearch.service.d
+           └─override.conf
+   Active: failed (Result: exit-code) since Wed 2020-02-05 09:36:22 UTC; 6min ago
+     Docs: http://www.elastic.co
+  Process: 1015 ExecStart=/usr/share/elasticsearch/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+ Main PID: 1015 (code=exited, status=1/FAILURE)
+
+Feb 05 09:36:04 minion2 systemd[1]: Starting Elasticsearch...
+Feb 05 09:36:08 minion2 elasticsearch[1015]: OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+Feb 05 09:36:22 minion2 systemd[1]: elasticsearch.service: main process exited, code=exited, status=1/FAILURE
+Feb 05 09:36:22 minion2 systemd[1]: Failed to start Elasticsearch.
+Feb 05 09:36:22 minion2 systemd[1]: Unit elasticsearch.service entered failed state.
+Feb 05 09:36:22 minion2 systemd[1]: elasticsearch.service failed.
+```
+solution:
+- **Solved**. Problem was that the JAVA_HOME setting in **/etc/sysconfig/elasticsearch** was pointing too far down the Java path. Should have been **/usr/openv/java**
+
+
+
+ /usr/bin/java 

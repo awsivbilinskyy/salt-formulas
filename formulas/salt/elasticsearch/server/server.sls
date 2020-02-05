@@ -47,11 +47,11 @@ uptodate_apt:
 
 java_open_packages:
   pkg.installed:
-  - name: java-1.8.0-openjdk
+  - name: java-11-openjdk
 
 java_devel_packages:
   pkg.installed:
-  - name: java-1.8.0-openjdk-devel
+  - name: java-11-openjdk-devel
 
 elasticsearch_packages:
   pkg.installed:

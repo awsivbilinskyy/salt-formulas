@@ -1,5 +1,5 @@
 {%- from "elasticsearch/map.jinja" import server with context %}
-{% if grains['os_family'] == 'Debian' %}
+
 elasticsearch_default:
   file.managed:
   - name: /etc/default/elasticsearch
@@ -23,7 +23,6 @@ elasticsearch_logging:
   - template: jinja
   - require:
     - pkg: elasticsearch_packages
-{% endif %}
 
 elasticsearch_jvm_options:
   file.managed:
