@@ -53,7 +53,7 @@ elasticsearch_restart_systemd:
 {%- endif %}
 
 
-chmod_dir_{{ server.directorylist }}:
+chmod_dir:
   file.directory:
     - name:
       - {{ server.directorylist }}
