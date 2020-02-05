@@ -15,16 +15,14 @@ cd /saltroot/formulas/ && git pull
 sudo salt -G 'roles:elasticsearch' state.sls elasticsearch 
 ```
 
-
+sudo salt-run state.event pretty=True
 sudo -u elasticsearch /usr/share/elasticsearch/bin/elasticsearch -p /tmp/elasticsearch.pid 
 ```
 sudo chown elasticsearch:elasticsearch -R /usr/share/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /var/log/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /var/lib/elasticsearch && \
 sudo chown elasticsearch:elasticsearch -R /etc/default/elasticsearch && \
-sudo chown elasticsearch:elasticsearch -R /etc/elasticsearch
-sudo chown elasticsearch:elasticsearch -R /var/log/elasticsearch
-sudo chown elasticsearch:elasticsearch -R /var/run/elasticsearch
+sudo chown elasticsearch:elasticsearch -R /etc/elasticsearch && \
 
 ```
 [Configure elasticsearch on Centos7](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-centos-7)

@@ -52,6 +52,11 @@ elasticsearch_restart_systemd:
     - service: elasticsearch_service
 {%- endif %}
 
+{% if grains['os_family'] == 'RedHat' %}
+include:
+  - elasticsearch.server.chmod_directory.sls
+{% endif %}
+
 elasticsearch_service:
   service.running:
   - enable: true
