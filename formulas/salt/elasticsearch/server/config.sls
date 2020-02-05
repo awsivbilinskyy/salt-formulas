@@ -66,6 +66,19 @@ chmod_{{dir}}:
       - mode
 {% endfor %}
 
+{% for file in server.filelist %}
+chmod_{{file}}:
+  file.directory:
+    - name: {{ file }}
+    - user: {{ server.elasticsearch_user }}
+    - group: {{ server.elasticsearch_group }}
+    - file_mode: 644
+    - recurse:
+      - user
+      - group
+      - mode
+{% endfor %}
+
 elasticsearch_service:
   service.running:
   - enable: true

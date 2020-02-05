@@ -14,13 +14,14 @@ Debian:
   - /usr/share/elasticsearch
   - /var/log/elasticsearch
   - /var/lib/elasticsearch
-  - /etc/default/elasticsearch
   - /etc/elasticsearch
+  filelist:
+  - /etc/default/elasticsearch
 
 RedHat:
   pkgs:
-  - java-1.8.0-openjdk
-  - java-1.8.0-openjdk-devel
+  - java-11-openjdk
+  - java-11-openjdk-devel
   - elasticsearch
   curator_pkgs:
   - elasticsearch-curator
@@ -32,8 +33,9 @@ RedHat:
   - /usr/share/elasticsearch
   - /var/log/elasticsearch
   - /var/lib/elasticsearch
-  - /etc/default/elasticsearch
   - /etc/elasticsearch
+  filelist:
+  - /etc/default/elasticsearch
 
 default:
   version: 5
