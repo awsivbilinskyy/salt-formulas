@@ -58,15 +58,12 @@ chmod_{{dir}}:
 
 {% for file in server.filelist %}
 chmod_{{file}}:
-  file.directory:
+  file.managed:
     - name: {{ file }}
     - user: {{ server.elasticsearch_user }}
     - group: {{ server.elasticsearch_group }}
     - file_mode: 644
-    - recurse:
-      - user
-      - group
-      - mode
+    - replace: False
 {% endfor %}
 
 elasticsearch_service:
