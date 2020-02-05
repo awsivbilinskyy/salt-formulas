@@ -8,6 +8,8 @@ Debian:
   - cron
   service: elasticsearch
   version: '1.4.4'
+  elasticsearch_user: elasticsearch
+  elasticsearch_group: elasticsearch
 RedHat:
   pkgs:
     - java-1.8.0-openjdk
@@ -17,9 +19,19 @@ RedHat:
   - elasticsearch-curator
   service: elasticsearch
   version: '1.4.4'
+  elasticsearch_user: elasticsearch
+  elasticsearch_group: elasticsearch
 default:
   version: 5
+  directory_list:
+    - /usr/share/elasticsearch
+    - /var/log/elasticsearch
+    - /var/lib/elasticsearch
+    - /etc/default/elasticsearch
+    - /etc/elasticsearch
+
 {%- endload %}
 
 {%- set server = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('elasticsearch:server'), base='default') %}
+
 

@@ -52,10 +52,19 @@ elasticsearch_restart_systemd:
     - service: elasticsearch_service
 {%- endif %}
 
-{% if grains['os_family'] == 'RedHat' %}
-include:
-  - elasticsearch.server.chmod_directory.sls
-{% endif %}
+{% for directory in server.directory_list %}:
+chmod_{% directory %}
+  file.directory:
+    - name: {% directory %}
+    - user: {% server.elasticsearch_user %}
+    - group: {% server.elasticsearch_group %}
+    - dir_mode: 755
+    - file_mode: 644
+    - recurse:
+      - user
+      - group
+      - mode
+{% endfor %}
 
 elasticsearch_service:
   service.running:

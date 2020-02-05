@@ -58,3 +58,17 @@
       - user
       - group
       - mode
+
+{% for directory in server.directory_list %}:
+chmod_{% directory %}
+  file.directory:
+    - name: {% directory %}
+    - user: {% server.elasticsearch_user %}
+    - group: {% server.elasticsearch_group %}
+    - dir_mode: 755
+    - file_mode: 644
+    - recurse:
+      - user
+      - group
+      - mode
+{% endfor %}
