@@ -1,8 +1,8 @@
 {%- load_yaml as base_defaults %}
 Debian:
   pkgs:
-    - default-jre-headless
-    - elasticsearch
+  - default-jre-headless
+  - elasticsearch
   curator_pkgs:
   - elasticsearch-curator
   - cron
@@ -12,9 +12,9 @@ Debian:
   elasticsearch_group: elasticsearch
 RedHat:
   pkgs:
-    - java-1.8.0-openjdk
-    - java-1.8.0-openjdk-devel
-    - elasticsearch
+  - java-1.8.0-openjdk
+  - java-1.8.0-openjdk-devel
+  - elasticsearch
   curator_pkgs:
   - elasticsearch-curator
   service: elasticsearch

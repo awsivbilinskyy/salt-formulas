@@ -52,10 +52,10 @@ elasticsearch_restart_systemd:
     - service: elasticsearch_service
 {%- endif %}
 
-{% for item in server.directory_list -%}:
-chmod_{% item %}:
+
+chmod_dir:
   file.directory:
-    - name: {% item %}
+    - name: {% server.directory_list %}
     - user: {% server.elasticsearch_user %}
     - group: {% server.elasticsearch_group %}
     - dir_mode: 755
@@ -64,7 +64,7 @@ chmod_{% item %}:
       - user
       - group
       - mode
-{% endfor %}
+
 
 elasticsearch_service:
   service.running:
