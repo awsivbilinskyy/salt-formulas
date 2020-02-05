@@ -55,8 +55,7 @@ elasticsearch_restart_systemd:
 
 chmod_dir:
   file.directory:
-    - name:
-      - {{ server.directorylist }}
+    - name: {{ server.directorylist }}
     - user: {{ server.elasticsearch_user }}
     - group: {{ server.elasticsearch_group }}
     - dir_mode: 755
