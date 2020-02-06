@@ -31,6 +31,7 @@ sudo chown elasticsearch:elasticsearch -R /etc/elasticsearch && \
 
 local VM's verification links:
 http://192.168.56.42:9200/
+
 http://192.168.56.41:9200/
 
 cluster.name: myES_Cluster
