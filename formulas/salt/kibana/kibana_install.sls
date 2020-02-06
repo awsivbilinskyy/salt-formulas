@@ -1,3 +1,4 @@
+{%- from "kibana/map.jinja" import server with context %}
 {% if grains['os_family'] == 'Debian' %}
 elasticsearch_repository:
   pkgrepo.managed:
