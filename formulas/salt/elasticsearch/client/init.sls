@@ -1,0 +1,2 @@
+include:
+  - elasticsearch.client.client
