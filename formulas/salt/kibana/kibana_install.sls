@@ -1,4 +1,4 @@
-{%- from "kibana/map.jinja" import server with context %}
+{%- from "kibana/map.jinja" import kibana with context %}
 {% if grains['os_family'] == 'Debian' %}
 kibana_ubuntu_repository:
   pkgrepo.managed:
