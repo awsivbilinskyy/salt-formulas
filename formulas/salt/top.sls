@@ -6,4 +6,7 @@ base:
     - nginx
   'G@roles:salt-minion and G@roles:elasticsearch':
     - selinux
-    - elasticsearch
+    - elasticsearch.server
+  'G@roles:salt-minion and G@roles:elasticclient':
+    - selinux
+    - elasticsearch.client
