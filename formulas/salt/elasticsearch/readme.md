@@ -14,7 +14,7 @@ cd /saltroot/formulas/ && git pull
 
 sudo salt -G 'roles:elasticsearch' state.sls elasticsearch 
 
-sudo salt -G 'roles:elasticsearch' state.sls elasticsearch.client
+sudo salt -G 'roles:elasticclient' state.sls elasticsearch.client
 
 ```
 
