@@ -1,0 +1,28 @@
+{%- load_yaml as base_defaults %}
+
+Debian:
+  pkgs:
+  - logstash
+  service: logstash
+  version: '1.4.4'
+  port: 5601
+  server_name: logstash
+  server_host: "0.0.0.0"
+  elasticsearch_hosts: "http://localhost:9200"
+
+RedHat:
+  pkgs:
+  - logstash
+  service: logstash
+  version: '1.4.4'
+  port: 5601
+  server_name: logstash
+  server_host: "0.0.0.0"
+  elasticsearch_hosts: "http://localhost:9200"
+
+default:
+  version: 5
+
+{%- endload %}
+
+{%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('logstash:server'), base='default') %}
