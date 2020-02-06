@@ -29,6 +29,7 @@ sudo chown elasticsearch:elasticsearch -R /etc/elasticsearch && \
 
 # Role description
 
+local VM's verification links:
 http://192.168.56.42:9200/
 http://192.168.56.41:9200/
 
