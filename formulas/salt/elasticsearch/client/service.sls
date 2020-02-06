@@ -1,6 +1,7 @@
 {%- from "elasticsearch/map.jinja" import client with context %}
-{%- if client.get('enabled', False) %}
-elasticsearch_client_packages:
+
+{% for pkg in client.pkgs %}
+elasticsearch_client_packages_{{ pkgs }}:
   pkg.installed:
-  - names: {{ client.pkgs }}
-{%- endif %}
+  - names: {{ pkgs }}
+{% endfor %}
