@@ -49,7 +49,7 @@ chmod_{{dir}}:
     - user: {{ server.elasticsearch_user }}
     - group: {{ server.elasticsearch_group }}
     - dir_mode: 755
-    - file_mode: 644
+    - file_mode: 744
     - recurse:
       - user
       - group
@@ -62,7 +62,7 @@ chmod_{{file}}:
     - name: {{ file }}
     - user: {{ server.elasticsearch_user }}
     - group: {{ server.elasticsearch_group }}
-    - mode: 644
+    - mode: 744
     - replace: False
 {% endfor %}
 
