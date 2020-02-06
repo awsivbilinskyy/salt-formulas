@@ -13,6 +13,9 @@ my temp notes:
 cd /saltroot/formulas/ && git pull 
 
 sudo salt -G 'roles:elasticsearch' state.sls elasticsearch 
+
+sudo salt -G 'roles:elasticsearch' state.sls elasticsearch.client
+
 ```
 
 sudo salt-run state.event pretty=True
