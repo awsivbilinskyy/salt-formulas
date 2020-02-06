@@ -47,6 +47,7 @@ default:
 {%- load_yaml as client_defaults %}
 Debian:
   pkgs:
+  - default-jre-headless
   - python-elasticsearch
   server:
     host: 127.0.0.1
@@ -54,6 +55,7 @@ Debian:
     binary_port: 9300
 RedHat:
   pkgs:
+  - java-11-openjdk
   - python-elasticsearch
   server:
     host: 127.0.0.1
