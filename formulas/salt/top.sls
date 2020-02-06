@@ -7,7 +7,6 @@ base:
   'G@roles:salt-minion and G@roles:elasticsearch':
     - selinux
     - elasticsearch.server
-    - kibana
-  'G@roles:salt-minion and G@roles:elasticclient':
+  'G@roles:salt-minion and G@roles:kibana':
     - selinux
-    - elasticsearch.client
+    - kibana
