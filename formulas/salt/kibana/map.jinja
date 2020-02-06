@@ -5,12 +5,20 @@ Debian:
   - kibana
   service: kibana
   version: '1.4.4'
+  port: 5601
+  server_name: kibana
+  server_host: "0.0.0.0"
+  elasticsearch_hosts: "http://localhost:9200"
 
 RedHat:
   pkgs:
   - kibana
   service: kibana
   version: '1.4.4'
+  port: 5601
+  server_name: kibana
+  server_host: "0.0.0.0"
+  elasticsearch_hosts: "http://localhost:9200"
 
 default:
   version: 5

@@ -1,6 +1,7 @@
-server.port: 5601
-server.host: "0.0.0.0"
+{%- from "kibana/map.jinja" import kibana with context -%}
+server.port: {{ kibana.port }}
+server.host: {{ kibana.server_host }}
 server.name: "kibana"
-elasticsearch.hosts: ["http://localhost:9200"]
+elasticsearch.hosts: [ "http://localhost:9200" ]
 kibana.index: ".kibana"
 elasticsearch.pingTimeout: 1500
