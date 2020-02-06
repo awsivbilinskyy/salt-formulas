@@ -5,4 +5,5 @@ base:
     - selinux
     - nginx
   'G@roles:salt-minion and G@roles:elasticsearch':
+    - selinux
     - elasticsearch
