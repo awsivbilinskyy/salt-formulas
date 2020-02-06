@@ -17,7 +17,7 @@ sudo salt -G 'roles:elasticsearch' state.sls elasticsearch
 cd /saltroot/formulas && \
 sudo git pull
 
-sudo salt -G 'roles:elasticclient' state.sls elasticsearch.client
+sudo salt -G 'roles:elasticsearch' state.sls kibana
 
 ```
 

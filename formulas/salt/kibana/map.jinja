@@ -1,0 +1,20 @@
+{%- load_yaml as base_defaults %}
+
+Debian:
+  pkgs:
+  - kibana
+  service: kibana
+  version: '1.4.4'
+
+RedHat:
+  pkgs:
+  - kibana
+  service: kibana
+  version: '1.4.4'
+
+default:
+  version: 5
+
+{%- endload %}
+
+{%- set server = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('kibana:server'), base='default') %}
