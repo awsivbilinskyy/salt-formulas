@@ -10,8 +10,9 @@ reconfigure_kibana_proxy:
   - template: jinja
 
 kibana_proxy_restart:
-  module.wait:
-    - name: service.restart
-    - m_name: nginx
-    - require;
-      - reconfigure_kibana_proxy
+  service.running:
+  - enable: True
+  - name: nginx
+  - reload: True
+  - watch:
+    - file: reconfigure_kibana_proxy
