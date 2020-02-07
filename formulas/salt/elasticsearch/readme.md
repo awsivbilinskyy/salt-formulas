@@ -22,6 +22,7 @@ sudo git pull
 ```
 
 sudo salt-run state.event pretty=True
+
 sudo -u elasticsearch /usr/share/elasticsearch/bin/elasticsearch -p /tmp/elasticsearch.pid 
 ```
 sudo chown elasticsearch:elasticsearch -R /usr/share/elasticsearch && \
