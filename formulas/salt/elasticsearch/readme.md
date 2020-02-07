@@ -20,7 +20,6 @@ sudo git pull
 
 
 ```
-
 sudo salt-run state.event pretty=True
 
 sudo -u elasticsearch /usr/share/elasticsearch/bin/elasticsearch -p /tmp/elasticsearch.pid 
@@ -81,3 +80,10 @@ solution:
 
 
  /usr/bin/java 
+
+
+
+ sudo salt '*' network.interface_ip enp0s8
+
+
+ https://www.reddit.com/r/saltstack/comments/36mcmv/get_remote_or_multiple_minion_ip_address_in_jinja/

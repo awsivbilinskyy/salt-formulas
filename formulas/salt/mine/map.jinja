@@ -1,0 +1,11 @@
+{% set mineinfo = salt['grains.filter_by']({
+
+  'Debian': {
+    'taken_interface': 'enp0s8',
+  },
+
+  'RedHat': {
+    'taken_interface': 'eth0',
+  },
+
+})%}
