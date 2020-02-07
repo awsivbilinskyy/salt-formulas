@@ -1,7 +1,8 @@
+{%- from "kibana/map.jinja" import kibana with context -%}
 ---
 http.host: "0.0.0.0"
 path.config: /usr/share/logstash/pipeline
-{% for server, addrs in salt['mine.get']('roles:web', 'network.ip_addrs', tgt_type='grain') | dictsort() %}
-xpack.monitoring.elasticsearch.url: http://{{ server }} {{ addrs[0] }}:80 check
+{% for addrs in salt['mine.get']('roles:elasticsearch', 'network.ip_addrs', tgt_type='grain') | dictsort() %}
+xpack.monitoring.elasticsearch.url: \"http://{{ addrs[0] }}:{{}}\"
 {% endfor %}
-xpack.monitoring.elasticsearch.url: "http://localhost:9200"
+#xpack.monitoring.elasticsearch.url: "http://localhost:9200"
