@@ -1,6 +1,6 @@
 {%- from "logstash/map.jinja" import logstash with context -%}
 ---
-http.host: "0.0.0.0"
+http.host: "0"
 path.config: /usr/share/logstash/pipeline
 {% for server, addrs in salt['mine.get']('roles:elasticsearch', 'network.ip_addrs', tgt_type='grain') | dictsort() %}
 xpack.monitoring.elasticsearch.url: "http://{{ addrs[0] }}:9200"
