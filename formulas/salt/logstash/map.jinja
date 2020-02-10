@@ -11,6 +11,7 @@ Debian:
   server_host: "0.0.0.0"
   elasticsearch_hosts: "http://localhost:9200"
   file_collection_logs:
+  - /var/log/syslog
   - /var/log/auth.log
   - /var/log/nginx/access.log
   - /var/log/nginx/error.log
@@ -26,6 +27,7 @@ RedHat:
   server_host: "0.0.0.0"
   elasticsearch_hosts: "http://localhost:9200"
   file_collection_logs:
+  - /var/log/syslog
   - /var/log/auth.log
   - /var/log/nginx/access.log
   - /var/log/nginx/error.log
