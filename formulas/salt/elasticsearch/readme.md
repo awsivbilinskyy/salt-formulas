@@ -40,6 +40,25 @@ http://192.168.56.42:9200/
 
 http://192.168.56.41:9200/
 
+
+
+# Local VM's links to tests infrastructure:
+
+**Salt Master VM:**
+- ssh                       ```vagrant ssh salt```
+- command to acces salt event bus ```sudo salt-run state.event pretty=True```
+
+**Minion1 (to run logstash) VM:**
+- ssh                      ```vagrant ssh minion1```
+- logstash interface:      http://
+
+**Elastic search VM:**
+- ssh                       ```vagrant ssh elasticsearch```
+- elasticsearch interface:  http://192.168.56.43:9200/
+- kibana interface:         http://192.168.56.43:5601/
+- kibana proxied interface: http://192.168.56.43:80
+
+
 cluster.name: myES_Cluster
 node.name: ESNODE_CYR
 node.master: true
