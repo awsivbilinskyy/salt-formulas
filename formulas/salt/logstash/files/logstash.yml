@@ -1,4 +1,4 @@
-{%- from "kibana/map.jinja" import kibana with context -%}
+{%- from "logstash/map.jinja" import logstash with context -%}
 ---
 http.host: "0.0.0.0"
 path.config: /usr/share/logstash/pipeline
