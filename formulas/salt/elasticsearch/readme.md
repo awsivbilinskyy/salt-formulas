@@ -57,7 +57,7 @@ sudo salt -G 'roles:logstash' state.sls logstash
 
 **Minion1 (to run logstash) VM:**
 - ssh                      ```vagrant ssh minion1```
-- logstash interface:      http://
+- logstash interface:      http://192.168.56.41:9600/
 
 **Elastic search VM:**
 - ssh                       ```vagrant ssh elasticsearch```
