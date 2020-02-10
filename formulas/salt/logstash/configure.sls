@@ -12,6 +12,14 @@ logstash_configuration_file:
   - source: salt://logstash/files/logstash.conf
   - template: jinja
 
+{% for file in logstash.file_collection_logs %}
+chmod_{{file}}:
+  file.managed:
+    - name: {{ file }}
+    - mode: 755
+    - replace: False
+{% endfor %}
+
 logstash_service:
   service.running:
   - enable: true
