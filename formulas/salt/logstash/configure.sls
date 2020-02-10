@@ -8,7 +8,7 @@ logstash_yml_file:
 
 logstash_configuration_file:
   file.managed:
-  - name: /etc/logstash/logstash.conf
+  - name: /etc/logstash/cond.d/filebeat.conf
   - source: salt://logstash/files/logstash.conf
   - template: jinja
 

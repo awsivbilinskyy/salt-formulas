@@ -1,0 +1,24 @@
+{%- from "filebeat/map.jinja" import filebeat with context %}
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+
+filebeat.input:
+- type: log
+  paths:
+    - /var/log/nginx/error.log
+    - /var/log/nginx/acces.log
+
+output.logstash:
+  enabled: true
+  hosts: ["127.0.0.1:5044"]
+  timeout: 30
+
+#health check for consul
+http.enabled: true
+http.host: 0.0.0.0 
+http.port: 5066

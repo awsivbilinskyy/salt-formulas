@@ -1,0 +1,32 @@
+{%- load_yaml as base_defaults %}
+
+Debian:
+  pkgs:
+  - openjdk-8-jre-headless
+  - filebeat
+  logs_to_collect:
+  - /var/log/massages
+  service: filebeat
+  version: '5'
+  port: 5601
+  server_name: filebeat
+  server_host: "0.0.0.0"
+  logstash_host: "http://localhost:5044"
+
+RedHat:
+  pkgs:
+  - java-1.8.0-openjdk
+  - filebeat
+  service: filebeat
+  version: '5'
+  port: 5601
+  server_name: filebeat
+  server_host: "0.0.0.0"
+  logstash_host: "http://localhost:5044"
+
+default:
+  version: 5
+
+{%- endload %}
+
+{%- set filebeat = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('filebeat:server'), base='default') %}
