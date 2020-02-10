@@ -1,3 +1,3 @@
 include:
   - logstash.install
-#  - logstash.config
+  - logstash.config
