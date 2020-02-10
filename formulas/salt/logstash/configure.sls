@@ -6,7 +6,7 @@ logstash_yml_file:
   - source: salt://logstash/files/logstash.yml
   - template: jinja
 
-logstash_config_file:
+logstash_configuration_file:
   file.managed:
   - name: /etc/logstash/logstash.conf
   - source: salt://logstash/files/logstash.conf
@@ -18,5 +18,5 @@ logstash_service:
   - name: {{ logstash.service }}
   - watch:
     - file:
-      - logstash_config_file
+      - logstash_configuration_file
       - logstash_yml_file
