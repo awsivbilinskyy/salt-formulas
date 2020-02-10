@@ -16,9 +16,7 @@ logstash_service:
   service.running:
   - enable: true
   - name: {{ logstash.service }}
-  {%- if grains.get('noservices') %}
-  - onlyif: /bin/false
-  {%- endif %}
   - watch:
     - file:
       - logstash_config_file
+      - logstash_yml_file
