@@ -1,33 +1,25 @@
 {%- from "logstash/map.jinja" import logstash with context %}
 
 {% if grains['os_family'] == 'Debian' %}
-logstash-repo-key:
-  cmd.run:
-    - name: wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
-    - unless: apt-key list | grep 'Elasticsearch (Elasticsearch Signing Key)'
-
-logstash-repo:
+elasticsearch_repository:
   pkgrepo.managed:
-    - humanname: Logstash Debian Repository
-    - name: deb http://packages.elasticsearch.org/logstash/{{ logstash.version }}/debian stable main
-    - require:
-      - cmd: logstash-repo-key
-
-{% elif grains['os_family'] == 'RedHat' %}
-logstash-repo-key:
-  cmd.run:
-    - name:  rpm --import http://packages.elasticsearch.org/GPG-KEY-elasticsearch
-    - unless: rpm -qi gpg-pubkey-d88e42b4-52371eca
-
-logstash-repo:
-  pkgrepo.managed:
-    - humanname: logstash repository for {{ logstash.version }}.x packages
-    - baseurl: http://packages.elasticsearch.org/logstash/{{ logstash.version }}/centos
+    - humanname: elasticsearch_repository
+    - name: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+    - dist: stable
+    - file: /etc/apt/sources.list.d/elasticsearch.list
     - gpgcheck: 1
-    - gpgkey: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
-    - enabled: 1
-    - require:
-      - cmd: logstash-repo-key
+    - key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+{% endif %}
+
+{% if grains['os_family'] == 'RedHat' %}
+elasticsearch_centos_repository:
+  pkgrepo.managed:
+    - humanname: elasticsearch_repository
+    - baseurl: https://artifacts.elastic.co/packages/7.x/yum
+    - gpgcheck: 1
+    - gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
 {% endif %}
 
 uptodate_apt_for_logstash:
