@@ -49,6 +49,12 @@ http://192.168.56.41:9200/
 - command to acces salt event bus ```sudo salt-run state.event pretty=True```
 - update local repo from remote ```cd /saltroot && sudo git pull```
 
+```
+sudo salt -G 'roles:elasticsearch' state.sls elasticsearch
+sudo salt -G 'roles:kibana' state.sls kibana
+sudo salt -G 'roles:logstash' state.sls logstash
+```
+
 **Minion1 (to run logstash) VM:**
 - ssh                      ```vagrant ssh minion1```
 - logstash interface:      http://

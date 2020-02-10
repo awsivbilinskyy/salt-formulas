@@ -1,3 +1,3 @@
 include:
-  - install.sls
-#  - config.sls
+  - logstash.install
+#  - logstash.config
