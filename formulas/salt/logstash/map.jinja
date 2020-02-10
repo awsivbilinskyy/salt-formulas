@@ -2,9 +2,10 @@
 
 Debian:
   pkgs:
+  - openjdk-8-jre-headless
   - logstash
   service: logstash
-  version: '1.4.4'
+  version: '5'
   port: 5601
   server_name: logstash
   server_host: "0.0.0.0"
@@ -12,9 +13,10 @@ Debian:
 
 RedHat:
   pkgs:
+  - java-1.8.0-openjdk
   - logstash
   service: logstash
-  version: '1.4.4'
+  version: '5'
   port: 5601
   server_name: logstash
   server_host: "0.0.0.0"
