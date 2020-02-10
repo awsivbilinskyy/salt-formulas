@@ -1,3 +1,3 @@
 include:
   - install.sls
-  - config.sls
+#  - config.sls
