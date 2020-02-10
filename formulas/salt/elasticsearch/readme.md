@@ -66,6 +66,10 @@ sudo salt -G 'roles:logstash' state.sls logstash
 - kibana proxied interface: http://192.168.56.43:80
 
 
+
+FILTERDOCS: https://www.elastic.co/guide/en/logstash/current/logstash-config-for-filebeat-modules.html
+
+
 cluster.name: myES_Cluster
 node.name: ESNODE_CYR
 node.master: true
