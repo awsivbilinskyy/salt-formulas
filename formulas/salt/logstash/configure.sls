@@ -17,6 +17,5 @@ logstash_service:
   - enable: true
   - name: {{ logstash.service }}
   - watch:
-    - file:
-      - logstash_configuration_file
-      - logstash_yml_file
+    - file: logstash_configuration_file
+    - file: logstash_yml_file
