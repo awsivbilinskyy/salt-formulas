@@ -29,5 +29,3 @@ default:
 
 {%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('logstash:server'), base='default') %}
 
-
-{% set ip_elasticsearch = salt[elasticsearch]['network.ip_addrs']('enp0s8')[0] %}
