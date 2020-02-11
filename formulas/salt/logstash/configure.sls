@@ -12,8 +12,16 @@ logstash_configuration_file:
   - source: salt://logstash/files/logstash.conf
   - template: jinja
 
+{% for filters in logstash.applied_filters %}
+logstash_filters_{{ filters }}:
+  file.managed:
+  - name: /etc/logstash/conf.d/{{ filters }}.conf
+  - source: salt://logstash/files/filters/{{ filters }}.conf
+  - template: jinja
+{% endfor %}
+
 {% for file in logstash.file_collection_logs %}
-chmod_{{file}}:
+chmod_{{ file }}:
   file.managed:
     - name: {{ file }}
     - mode: 755

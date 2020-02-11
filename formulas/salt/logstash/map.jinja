@@ -15,6 +15,9 @@ Debian:
   - /var/log/auth.log
   - /var/log/nginx/access.log
   - /var/log/nginx/error.log
+  applied_filters:
+  - nginx
+  - syslog
 
 RedHat:
   pkgs:
@@ -31,6 +34,9 @@ RedHat:
   - /var/log/auth.log
   - /var/log/nginx/access.log
   - /var/log/nginx/error.log
+  applied_filters:
+  - nginx
+  - syslog
 
 default:
   version: 5
