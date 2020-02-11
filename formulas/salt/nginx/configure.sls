@@ -26,9 +26,12 @@ nginx_webpage_available:
 {% endif %}
 
 nginx_restarting_configure:
-  module.wait:
-    - name: service.restart
-    - m_name: {{ mynginx.service }}
-
-#include:
-#  - nginx.restart
+  service.running:
+  - enable: true
+  - name: {{ mynginx.service }}
+  - watch:
+    - file: nginx_server_config
+    - file: nginx_webpage_config
+{% if grains['os_family'] == 'Debian' %}
+    - file: nginx_webpage_available
+{% endif %}

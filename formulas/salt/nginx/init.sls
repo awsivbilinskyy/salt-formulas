@@ -1,5 +1,3 @@
 include:
-  - nginx.server
-  - nginx.config
-  - nginx.service
-  - nginx.restart
+  - nginx.install
+  - nginx.configure
