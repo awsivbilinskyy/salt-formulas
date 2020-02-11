@@ -14,7 +14,6 @@ Debian:
   - /var/log/syslog
   - /var/log/auth.log
   applied_filters:
-  - nginx
   - syslog
 
 RedHat:
@@ -31,7 +30,6 @@ RedHat:
   - /var/log/syslog
   - /var/log/auth.log
   applied_filters:
-  - nginx
   - syslog
 
 default:
@@ -39,5 +37,5 @@ default:
 
 {%- endload %}
 
-{%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('server'), base='default') %}
+{%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('logstash'), base='default') %}
 
