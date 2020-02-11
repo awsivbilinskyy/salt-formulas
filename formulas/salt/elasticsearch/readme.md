@@ -53,6 +53,7 @@ http://192.168.56.41:9200/
 sudo salt -G 'roles:elasticsearch' state.sls elasticsearch
 sudo salt -G 'roles:kibana' state.sls kibana
 sudo salt -G 'roles:logstash' state.sls logstash
+sudo salt -G 'roles:nginx' state.sls logstash test=True
 ```
 
 **Minion1 (to run logstash) VM:**
