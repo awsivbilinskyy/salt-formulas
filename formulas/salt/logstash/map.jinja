@@ -13,10 +13,6 @@ Debian:
   file_collection_logs:
   - /var/log/syslog
   - /var/log/auth.log
-{% for server in salt['mine.get']('roles:nginx', 'network.ip_addrs', tgt_type='grain') | dictsort() %}
-  - /var/log/nginx/access.log
-  - /var/log/nginx/error.log
-{% endfor %}
   applied_filters:
   - nginx
   - syslog
@@ -34,10 +30,6 @@ RedHat:
   file_collection_logs:
   - /var/log/syslog
   - /var/log/auth.log
-{% for server in salt['mine.get']('roles:nginx', 'network.ip_addrs', tgt_type='grain') | dictsort() %}
-  - /var/log/nginx/access.log
-  - /var/log/nginx/error.log
-{% endfor %}
   applied_filters:
   - nginx
   - syslog

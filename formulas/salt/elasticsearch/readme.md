@@ -117,3 +117,8 @@ solution:
 
 
  https://www.reddit.com/r/saltstack/comments/36mcmv/get_remote_or_multiple_minion_ip_address_in_jinja/
+
+
+
+
+ {% for server in salt['mine.get']('roles:nginx', 'network.ip_addrs', tgt_type='grain') | dictsort() %}
