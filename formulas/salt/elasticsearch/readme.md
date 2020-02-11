@@ -67,6 +67,8 @@ sudo salt -G 'roles:nginx' state.sls logstash test=True
 - kibana proxied interface: http://192.168.56.43:80
 
 
+**[COMBINE PILLARS TRICK EXAMPLE](https://fabianlee.org/2017/05/12/saltstack-combine-multiple-pillar-files-under-a-single-key/)**
+
 
 FILTERDOCS: https://www.elastic.co/guide/en/logstash/current/logstash-config-for-filebeat-modules.html
 
