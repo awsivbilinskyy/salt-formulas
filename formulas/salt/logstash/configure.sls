@@ -6,6 +6,12 @@ logstash_yml_file:
   - source: salt://logstash/files/logstash.yml
   - template: jinja
 
+logstash_jvm_configuration_file:
+  file.managed:
+  - name: /etc/logstash/jvm.options
+  - source: salt://logstash/files/jvm.options
+  - template: jinja
+
 logstash_configuration_file:
   file.managed:
   - name: /etc/logstash/conf.d/filebeat.conf
