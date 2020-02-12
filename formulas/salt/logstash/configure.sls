@@ -26,12 +26,13 @@ logstash_filters_{{ filters }}:
   - template: jinja
 {% endfor %}
 
-{% for dir in server.directorylist %}
+{% if logstash.collection_directory_list is defined and logstash.collection_directory_list|length %}
+{% for dir in logstash.collection_directory_list %}
 chmod_{{dir}}:
   file.directory:
     - name: {{ dir }}
-    - user: {{ server.logstash_user }}
-    - group: {{ server.logstash_group }}
+    - user: {{ logstash.logstash_user }}
+    - group: {{ logstash.logstash_group }}
     - dir_mode: 755
     - file_mode: 744
     - recurse:
@@ -39,6 +40,7 @@ chmod_{{dir}}:
       - group
       - mode
 {% endfor %}
+{% endif %}
 
 {% for file in logstash.file_collection_logs %}
 chmod_{{ file }}:
