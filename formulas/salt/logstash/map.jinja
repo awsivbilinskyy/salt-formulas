@@ -9,6 +9,8 @@ Debian:
   port: 5601
   server_name: logstash
   server_host: "0.0.0.0"
+  logstash_user: logstash
+  logstash_group: logstash
   elasticsearch_hosts: "http://localhost:9200"
   file_collection_logs:
   - /var/log/syslog
@@ -25,6 +27,8 @@ RedHat:
   port: 5601
   server_name: logstash
   server_host: "0.0.0.0"
+  logstash_user: logstash
+  logstash_group: logstash
   elasticsearch_hosts: "http://localhost:9200"
   file_collection_logs:
   - /var/log/syslog
