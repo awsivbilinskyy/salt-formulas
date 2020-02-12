@@ -9,7 +9,10 @@ logstash:
 {% if grains['os_family'] == 'RedHat' %} 
   - /var/log/messages
   - /var/log/lastlog
+  collection_directory_list:
+  - /var/log/nginx
 {% endif %}
   applied_filters:
   - nginx
   - syslog
+
