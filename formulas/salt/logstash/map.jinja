@@ -15,35 +15,25 @@ Debian:
   - /var/log/auth.log
   applied_filters:
   - syslog
+
+RedHat:
+  pkgs:
+  - logstash
+  service: logstash
+  version: '5'
+  port: 5601
+  server_name: logstash
+  server_host: "0.0.0.0"
+  elasticsearch_hosts: "http://localhost:9200"
+  file_collection_logs:
+  - /var/log/syslog
+  - /var/log/auth.log
+  applied_filters:
+  - syslog
+
 default:
   version: 5
 
 {%- endload %}
 
 {%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('logstash'), merge=True, base='default') %}
-
-{% set mergedresult = { 'logstash': {} } %}
-{% for key in pillar.keys() %}
-{% if "logstash-" in key %}
-
-  {% set val = pillar.get(key) %}
-  {% set keyfilelogs = key~":file_collection_logs" %}
-  {% set custjobs = salt['pillar.get'](keyfilelogs,{}) %}
-
-{% set merged = salt['slsutil.merge'](
-     mergedresult['logstash'],
-     custjobs,
-     merge_lists=True
-   )
-%}
-{% do mergedresult.update({'logstash': merged}) %}
-
-{% endif %}
-{% endfor %}
-
-{% set logstash = salt['slsutil.merge'](
-     logstash,
-     mergedresult.logstash,
-     merge_lists=True
-   )
-%}
