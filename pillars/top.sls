@@ -6,3 +6,8 @@ base:
   'roles:elasticsearch':
     - match: grain
     - logstash_elastic
+
+### minion highstates verificator   
+  'roles:salt-minion':
+    - match: grain
+    - schedule
