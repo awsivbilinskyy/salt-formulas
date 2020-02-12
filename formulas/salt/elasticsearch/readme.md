@@ -111,12 +111,6 @@ Feb 05 09:36:22 minion2 systemd[1]: elasticsearch.service failed.
 solution:
 - **Solved**. Problem was that the JAVA_HOME setting in **/etc/sysconfig/elasticsearch** was pointing too far down the Java path. Should have been **/usr/openv/java**
 
-
-
- /usr/bin/java 
-
-
-
  sudo salt '*' network.interface_ip enp0s8
 
 
