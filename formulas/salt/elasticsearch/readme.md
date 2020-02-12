@@ -56,6 +56,7 @@ sudo salt -G 'roles:logstash' state.sls logstash
 sudo salt -G 'roles:nginx' state.sls logstash test=True
 ```
 
+
 sudo salt 'minion2' state.sls nginx test=True
 
 **Minion1 (to run logstash) VM:**
