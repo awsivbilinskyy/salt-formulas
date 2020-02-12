@@ -15,7 +15,6 @@ Debian:
   - /var/log/auth.log
   applied_filters:
   - syslog
-
 default:
   version: 5
 
@@ -27,7 +26,7 @@ default:
 
 {% set mergedresult = { 'logstash': {} } %}
 {% for key in pillar.keys() %}
-{% if "logstash" in key %}
+{% if "logstash-" in key %}
 
   {% set val = pillar.get(key) %}
   {% set keyfilelogs = key~":file_collection_logs" %}
