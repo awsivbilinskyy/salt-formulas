@@ -69,6 +69,7 @@ sudo salt -G 'roles:nginx' state.sls logstash test=True
 
 **[COMBINE PILLARS TRICK EXAMPLE](https://fabianlee.org/2017/05/12/saltstack-combine-multiple-pillar-files-under-a-single-key/)**
 
+**[SALT_JINJA](https://docs.saltstack.com/en/latest/topics/jinja/index.html#regex-search)**
 
 FILTERDOCS: https://www.elastic.co/guide/en/logstash/current/logstash-config-for-filebeat-modules.html
 
