@@ -22,8 +22,6 @@ default:
 
 {%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('logstash'), merge=True, base='default') %}
 
-{# part wich helps merge data for logstash from different pillars #}
-
 {% set mergedresult = { 'logstash': {} } %}
 {% for key in pillar.keys() %}
 {% if "logstash-" in key %}
@@ -42,8 +40,6 @@ default:
 
 {% endif %}
 {% endfor %}
-
-{# do final merge, adding to main variable in outer scope #}
 
 {% set logstash = salt['slsutil.merge'](
      logstash,
