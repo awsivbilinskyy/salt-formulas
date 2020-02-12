@@ -18,6 +18,7 @@ Debian:
 
 RedHat:
   pkgs:
+  - java-1.8.0-openjdk
   - logstash
   service: logstash
   version: '5'
@@ -36,4 +37,4 @@ default:
 
 {%- endload %}
 
-{%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('logstash'), merge=True, base='default') %}
+{%- set logstash = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('logstash'), base='default') %}
