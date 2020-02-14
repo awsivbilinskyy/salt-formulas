@@ -1,4 +1,4 @@
-{%- from "elasticsearch/map.jinja" import server with context %}
+{%- from "elasticsearch/map.jinja" import elasticsearch with context %}
 
 elasticsearch_default:
   file.managed:
@@ -42,12 +42,12 @@ elasticsearch_restart_systemd:
     - service: elasticsearch_service
 {%- endif %}
 
-{% for dir in server.directorylist %}
+{% for dir in elasticsearch.directorylist %}
 chmod_{{dir}}:
   file.directory:
     - name: {{ dir }}
-    - user: {{ server.elasticsearch_user }}
-    - group: {{ server.elasticsearch_group }}
+    - user: {{ elasticsearch.elasticsearch_user }}
+    - group: {{ elasticsearch.elasticsearch_group }}
     - dir_mode: 755
     - file_mode: 744
     - recurse:
@@ -56,12 +56,12 @@ chmod_{{dir}}:
       - mode
 {% endfor %}
 
-{% for file in server.filelist %}
+{% for file in elasticsearch.filelist %}
 chmod_{{file}}:
   file.managed:
     - name: {{ file }}
-    - user: {{ server.elasticsearch_user }}
-    - group: {{ server.elasticsearch_group }}
+    - user: {{ elasticsearch.elasticsearch_user }}
+    - group: {{ elasticsearch.elasticsearch_group }}
     - mode: 744
     - replace: False
 {% endfor %}
@@ -69,7 +69,7 @@ chmod_{{file}}:
 elasticsearch_service:
   service.running:
   - enable: true
-  - name: {{ server.service }}
+  - name: {{ elasticsearch.service }}
   {%- if grains.get('noservices') %}
   - onlyif: /bin/false
   {%- endif %}

@@ -26,7 +26,7 @@ uptodate_apt:
   pkg.uptodate:
     - refresh: True
 
-{% for package in server.pkgs %}
+{% for package in elasticsearch.pkgs %}
 install_{{ package }}_package:
   pkg.installed:
   - name: {{ package }}

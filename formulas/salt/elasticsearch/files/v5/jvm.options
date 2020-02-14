@@ -1,4 +1,4 @@
-{%- from "elasticsearch/map.jinja" import server with context -%}
+{%- from "elasticsearch/map.jinja" import elasticsearch with context -%}
 ## JVM configuration
 
 ################################################################
@@ -20,9 +20,9 @@
 # Xms represents the initial size of total heap space
 # Xmx represents the maximum size of total heap space
 
-# -Xms{{ server.get('heap', {}).get('size', grains.get('mem_total', 1024)/2/1024)|round(0, 'ceil')|int }}g
+# -Xms{{ elasticsearch.get('heap', {}).get('size', grains.get('mem_total', 1024)/2/1024)|round(0, 'ceil')|int }}g
 -Xms256m
--Xmx{{ server.get('heap', {}).get('size', grains.get('mem_total', 1024)/2/1024)|round(0, 'ceil')|int }}g
+-Xmx{{ elasticsearch.get('heap', {}).get('size', grains.get('mem_total', 1024)/2/1024)|round(0, 'ceil')|int }}g
 
 ################################################################
 ## Expert settings

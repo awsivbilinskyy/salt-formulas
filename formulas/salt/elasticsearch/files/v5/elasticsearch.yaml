@@ -1,7 +1,7 @@
-{%- from "elasticsearch/map.jinja" import server with context -%}
+{%- from "elasticsearch/map.jinja" import elasticsearch with context -%}
 ---
 cluster.name: "elasticsearch"
-node.name: {{ server.get('name', '${HOSTNAME}') }}
+node.name: {{ elasticsearch.get('name', '${HOSTNAME}') }}
 node.master: true
 node.data: true
 transport.host: localhost
