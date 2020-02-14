@@ -1,4 +1,4 @@
-{%- from "elasticsearch/map.jinja" import server with context %}
+{%- from "elasticsearch/map.jinja" import elasticsearch with context %}
 
 {% if grains['os_family'] == 'Debian' %}
 elasticsearch_repository:
