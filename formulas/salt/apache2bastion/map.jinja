@@ -1,0 +1,22 @@
+{%- load_yaml as base_defaults %}
+
+Debian:
+  pkgs:
+  - kibana
+  webservice: bastion
+  port: 5601
+  proxy_port: 80
+
+RedHat:
+  pkgs:
+  - kibana
+  webservice: bastion
+  port: 5601
+  proxy_port: 80
+
+default:
+  version: 5
+
+{%- endload %}
+
+{%- set apache2bastion = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('apache2bastion'), base='default') %}
