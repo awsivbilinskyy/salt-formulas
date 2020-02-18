@@ -2,6 +2,8 @@
 server.port: {{ kibana.port }}
 server.host: {{ kibana.server_host }}
 server.name: "kibana"
-elasticsearch.hosts: [ {{ kibana.elasticsearch_hosts }} ]
+{% for server, addrs in salt['mine.get']('roles:elasticsearch', 'network.ip_addrs', tgt_type='grain') | dictsort() %}
+elasticsearch.hosts: [ "http://{{ addrs[0] }}:9200" ]
+{% endfor %}
 kibana.index: ".kibana"
 elasticsearch.pingTimeout: 1500
