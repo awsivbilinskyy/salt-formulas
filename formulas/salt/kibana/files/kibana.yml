@@ -2,6 +2,6 @@
 server.port: {{ kibana.port }}
 server.host: {{ kibana.server_host }}
 server.name: "kibana"
-elasticsearch.hosts: [ "http://localhost:9200" ]
+elasticsearch.hosts: [ {{ kibana.elasticsearch_hosts }} ]
 kibana.index: ".kibana"
 elasticsearch.pingTimeout: 1500
