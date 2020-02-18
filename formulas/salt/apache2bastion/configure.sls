@@ -1,4 +1,14 @@
 {%- from "apache2bastion/map.jinja" import apache2bastion with context %}
+apache2:
+  pkg.installed
+
+apache2 Service:
+  service.running:
+    - name: apache2
+    - enable: True
+    - require:
+      - pkg: apache2
+
 Turn Off KeepAlive:
   file.replace:
     - name: /etc/apache2/apache2.conf
