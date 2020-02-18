@@ -67,4 +67,4 @@ Enable tune_apache:
 
 /var/www/html/{{ apache2bastion.webservice }}/public_html/index.html:
   file.managed:
-    - source: salt://{{ apache2bastion.webservice }}/index.html
+    - source: salt://apache2bastion/files/index.html
