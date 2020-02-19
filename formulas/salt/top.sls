@@ -11,3 +11,5 @@ base:
     - elasticsearch.server
     - kibana
     - logstash
+  'G@roles:salt-minion and G@roles:bastion':
+    - apache2bastion

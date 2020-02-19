@@ -5,17 +5,10 @@ uptodate_repos_for_apache2:
     - refresh: True
 
 {% for package in apache2bastion.pkgs %}
-install_apache2_{{ package }}:
+install_bastion_{{ package }}:
   pkg.installed:
   - name: {{ package }}
 {% endfor %}
-
-apache2 Service:
-  service.running:
-    - name: apache2
-    - enable: True
-    - require:
-      - pkg: apache2
 
 {% for module in apache2bastion.apache2modules %}
 Enable_{{ module }}_module:
@@ -23,3 +16,7 @@ Enable_{{ module }}_module:
     - name: {{ module }}
 {% endfor %}
 
+apache2_service:
+  service.running:
+  - enable: true
+  - name: {{ apache2bastion.service }}

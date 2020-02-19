@@ -1,4 +1,5 @@
 include:
+  - apache2bastion.apache_install
 {% if grains['os_family'] == 'RedHat' %}
   - apache2bastion.apache_centos
 {% endif %}
