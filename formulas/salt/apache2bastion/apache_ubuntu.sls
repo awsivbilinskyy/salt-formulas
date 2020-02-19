@@ -47,14 +47,13 @@ Enable tune_apache:
           - SSLProxyCheckPeerCN: off
           - SSLProxyCheckPeerName: off
           - SSLProxyCheckPeerExpire: off
-          - Location:
-              - this: '/'
-              - ProxyPass / http://192.168.56.43:80/
-              - ProxyPassReverse / http://192.168.56.43:80/
-              - Order allow,deny
-              - Allow from all
           - ProxyPreserveHost: off
-
+        - Location:
+          - this: '/'
+          - ProxyPass / http://192.168.56.43:80/
+          - ProxyPassReverse / http://192.168.56.43:80/
+          - Order allow,deny
+          - Allow from all
 
 {{ apache2bastion.webservice }}:
   apache_site.enabled
