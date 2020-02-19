@@ -48,10 +48,11 @@ Enable tune_apache:
           - SSLProxyCheckPeerName: off
           - SSLProxyCheckPeerExpire: off
           - ProxyPreserveHost: off
+          - RewriteEngine on
           - Location:
             - this: '/kibana'
-            - ProxyPass: http://192.168.56.43:80
-            - ProxyPassReverse: http://192.168.56.43:80
+            - ProxyPass: http://192.168.56.43:80/app/kibana#/
+            - ProxyPassReverse: http://192.168.56.43:80/app/kibana#/
             - Order: allow,deny
             - Allow: from all
           - Location:
