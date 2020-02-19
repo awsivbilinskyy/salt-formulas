@@ -19,4 +19,4 @@ Enable_{{ module }}_module:
 apache2_service:
   service.running:
   - enable: true
-  - name: {{ apache2bastion.service }}
+  - name: {{ apache2bastion.servicename }}

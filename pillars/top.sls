@@ -7,6 +7,10 @@ base:
     - match: grain
     - logstash_elastic
 
+  'roles:elasticsearch':
+    - match: grain
+    - logstash_bastion
+
 ### minion highstates verificator   
   'roles:salt-minion':
     - match: grain

@@ -12,4 +12,6 @@ base:
     - kibana
     - logstash
   'G@roles:salt-minion and G@roles:bastion':
+    - selinux
+    - logstash
     - apache2bastion
