@@ -49,13 +49,13 @@ Enable tune_apache:
           - SSLProxyCheckPeerExpire: off
           - ProxyPreserveHost: off
           - Location:
-            - this: /kibana
+            - this: /kibana/
             - ProxyPass: http://192.168.56.43:80/
             - ProxyPassReverse: http://192.168.56.43:80/
             - Order: allow,deny
             - Allow: from all
           - Location:
-            - this: /web1
+            - this: /web1/
             - ProxyPass: http://192.168.56.41:80/
             - ProxyPassReverse: http://192.168.56.41:80/
             - Order: allow,deny
@@ -72,7 +72,7 @@ apache2_service_restart:
   service.running:
   - enable: true
   - name: {{ apache2bastion.servicename }}
-  - watch:
-    - file: /etc/apache2/sites-available/{{ apache2bastion.webservice }}.conf
-    - file: /var/www/html/{{ apache2bastion.webservice }}/public_html/index.html
-    - file: /etc/apache2/conf-available/tune_apache.conf
+#  - watch:
+#    - file: /etc/apache2/sites-available/{{ apache2bastion.webservice }}.conf
+#    - file: /var/www/html/{{ apache2bastion.webservice }}/public_html/index.html
+#    - file: /etc/apache2/conf-available/tune_apache.conf
