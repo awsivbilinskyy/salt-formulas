@@ -50,14 +50,14 @@ Enable tune_apache:
           - ProxyPreserveHost: off
           - Location:
             - this: /kibana/
-            - ProxyPass: http://192.168.56.43:80/
-            - ProxyPassReverse: http://192.168.56.43:80/
+            - ProxyPass: http://192.168.56.43:80
+            - ProxyPassReverse: http://192.168.56.43:80
             - Order: allow,deny
             - Allow: from all
           - Location:
             - this: /web1/
-            - ProxyPass: http://192.168.56.41:80/
-            - ProxyPassReverse: http://192.168.56.41:80/
+            - ProxyPass: http://192.168.56.41:80
+            - ProxyPassReverse: http://192.168.56.41:80
             - Order: allow,deny
             - Allow: from all
 
