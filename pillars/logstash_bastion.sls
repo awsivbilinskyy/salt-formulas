@@ -1,7 +1,7 @@
 logstash:
   file_collection_logs:
-  - /var/www/html/log/access.log
-  - /var/www/html/log/error.log
+  - /var/www/html/bastion/log/access.log
+  - /var/www/html/bastion/log/error.log
 {% if grains['os_family'] == 'Debian' %} 
   - /var/log/syslog
   - /var/log/auth.log
