@@ -61,3 +61,12 @@ Enable tune_apache:
 /var/www/html/{{ apache2bastion.webservice }}/public_html/index.html:
   file.managed:
     - source: salt://apache2bastion/files/index.html
+
+apache2_service_restart:
+  service.running:
+  - enable: true
+  - name: {{ apache2bastion.servicename }}
+  - watch:
+    - file: /etc/apache2/sites-available/{{ apache2bastion.webservice }}.conf
+    - file: /var/www/html/{{ apache2bastion.webservice }}/public_html/index.html
+    - file: /etc/apache2/conf-available/tune_apache.conf
