@@ -7,7 +7,7 @@ base:
     - match: grain
     - logstash_elastic
 
-  'roles:elasticsearch':
+  'roles:bastion':
     - match: grain
     - logstash_bastion
 
