@@ -15,12 +15,14 @@ Debian:
   - proxy_connect
   - proxy_html
   webservice: bastion
+  servicename: apache2
   port: 5601
   proxy_port: 80
 
 RedHat:
   pkgs:
-  - kibana
+  - apache2
+  - python-letsencrypt-apache
   apache2modules:
   - proxy
   - proxy_http
@@ -32,6 +34,7 @@ RedHat:
   - proxy_connect
   - proxy_html  
   webservice: bastion
+  servicename: apache2
   port: 5601
   proxy_port: 80
 
